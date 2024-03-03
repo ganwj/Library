@@ -54,12 +54,12 @@ function addBookToLibrary(book) {
     const switchDiv = document.createElement("div");
     const toggle = document.createElement("input");
     toggle.setAttribute("type", "checkbox");
-    const toggleID = "toggle" + i;
+    const toggleID = "toggle-" + i;
     i++;
     toggle.setAttribute("id", toggleID);
     const toggleLabel = document.createElement("label");
     toggleLabel.setAttribute("for", toggleID);
-    toggleLabel.textContent = "Toggle";
+    toggleLabel.textContent = "Toggle book status";
     const switchLabel = document.createElement("p");
     if (book.status == 0) {
         toggle.checked = false;
