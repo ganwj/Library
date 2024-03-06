@@ -204,7 +204,7 @@ dialog div:not(:last-child) {
 .form-buttons {
     display: flex;
     gap: 1rem;
-    margin-top: 2.5rem;
+    margin-top: 3rem;
 }
 
 .form-buttons button {
