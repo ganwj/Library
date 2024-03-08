@@ -38,20 +38,7 @@ function addBookToLibrary(book) {
     pagesDiv.appendChild(pages);
     article.appendChild(pagesDiv);
 
-    const statusDiv = document.createElement("div");
-    const statusLabel = document.createElement("p");
-    const status = document.createElement("p");
-    statusLabel.textContent = "Status:";
-    if (book.status == 0) {
-        status.textContent = "Not read yet";
-    } else if (book.status == 1) {
-        status.textContent = "Finished";
-    }
-    statusDiv.appendChild(statusLabel);
-    statusDiv.appendChild(status);
-    article.appendChild(statusDiv);
-
-    const switchDiv = document.createElement("div");
+    const toggleDiv = document.createElement("div");
     const toggle = document.createElement("input");
     toggle.setAttribute("type", "checkbox");
     const toggleID = "toggle-" + i;
@@ -60,29 +47,27 @@ function addBookToLibrary(book) {
     const toggleLabel = document.createElement("label");
     toggleLabel.setAttribute("for", toggleID);
     toggleLabel.textContent = "Toggle book status";
-    const switchLabel = document.createElement("p");
+    const statusLabel = document.createElement("p");
     if (book.status == 0) {
         toggle.checked = false;
-        switchLabel.textContent = "Not read";
+        statusLabel.textContent = "Not read yet";
     } else if (book.status == 1) {
         toggle.checked = true;
-        switchLabel.textContent = "Read";
+        statusLabel.textContent = "Finished";
     }
     toggle.addEventListener("change", function () {
-        if (toggle.checked === true) {
-            switchLabel.textContent = "Read";
-            status.textContent = "Finished";
+        if (toggle.checked) {
+            statusLabel.textContent = "Finished";
             book.status = 1;
         } else {
-            switchLabel.textContent = "Not read";
-            status.textContent = "Not read yet";
+            statusLabel.textContent = "Not read yet";
             book.status = 0;
         }
     });
-    switchDiv.appendChild(toggle);
-    switchDiv.appendChild(toggleLabel);
-    switchDiv.appendChild(switchLabel);
-    article.appendChild(switchDiv);
+    toggleDiv.appendChild(toggle);
+    toggleDiv.appendChild(toggleLabel);
+    toggleDiv.appendChild(statusLabel);
+    article.appendChild(toggleDiv);
 
     const controlsDiv = document.createElement("div");
     const removeBtn = document.createElement("button");
